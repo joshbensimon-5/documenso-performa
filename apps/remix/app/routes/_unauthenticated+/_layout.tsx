@@ -1,23 +1,25 @@
 import { Outlet } from 'react-router';
+import { motion } from 'framer-motion';
+
+import backgroundPattern from '@documenso/assets/images/background-pattern.png';
 
 export default function Layout() {
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-12 md:p-12 lg:p-24">
       <div>
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          {/* Video background */}
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="absolute h-full w-full object-cover"
+          {/* Background pattern */}
+          <motion.div
+            className="flex h-full w-full items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.4, transition: { duration: 0.5, delay: 0.5 } }}
           >
-            <source src="/videos/homepage-background.mp4" type="video/mp4" />
-          </video>
-          
-          {/* Background overlay - with lower opacity */}
-          <div className="absolute inset-0 bg-white bg-opacity-40"></div>
+            <img
+              src={backgroundPattern}
+              alt="background pattern"
+              className="-ml-[50vw] -mt-[15vh] h-full scale-125 object-cover dark:contrast-[70%] dark:invert dark:sepia md:scale-150 lg:scale-[175%]"
+            />
+          </motion.div>
           
           {/* SVG overlay */}
           <svg className="svg-hero pointer-events-none absolute z-10 -top-[5rem] left-1/4 -rotate-[15deg]" width="2302" height="3119" fill="none" xmlns="http://www.w3.org/2000/svg">
