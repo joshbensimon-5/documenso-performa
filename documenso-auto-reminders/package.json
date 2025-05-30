@@ -1,0 +1,25 @@
+{
+  "name": "documenso-auto-reminders",
+  "version": "1.0.0",
+  "description": "Automatic recurring email reminders for Documenso pending signatures",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "setup": "node setup.js",
+    "check": "node index.js --dry-run",
+    "stop-reminders": "node stop-reminders.js"
+  },
+  "keywords": ["documenso", "reminders", "automation", "signatures"],
+  "author": "Medibox",
+  "license": "MIT",
+  "dependencies": {
+    "node-cron": "^3.0.3",
+    "sqlite3": "^5.1.6",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "luxon": "^3.4.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+} 
