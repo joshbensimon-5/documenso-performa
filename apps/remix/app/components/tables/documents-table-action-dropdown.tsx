@@ -38,7 +38,6 @@ import { useToast } from '@documenso/ui/primitives/use-toast';
 import { DocumentDeleteDialog } from '~/components/dialogs/document-delete-dialog';
 import { DocumentDuplicateDialog } from '~/components/dialogs/document-duplicate-dialog';
 import { DocumentMoveDialog } from '~/components/dialogs/document-move-dialog';
-import { DocumentReminderDialog } from '~/components/dialogs/document-reminder-dialog';
 import { DocumentResendDialog } from '~/components/dialogs/document-resend-dialog';
 import { DocumentRecipientLinkCopyDialog } from '~/components/general/document/document-recipient-link-copy-dialog';
 import { useOptionalCurrentTeam } from '~/providers/team';
@@ -237,8 +236,6 @@ export const DocumentsTableActionDropdown = ({
         )}
 
         <DocumentResendDialog document={row} recipients={nonSignedRecipients} />
-
-        <DocumentReminderDialog document={row} recipients={nonSignedRecipients} />
 
         <DocumentShareButton
           documentId={row.id}

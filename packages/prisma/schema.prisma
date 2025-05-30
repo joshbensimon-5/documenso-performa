@@ -376,7 +376,6 @@ model Document {
   auditLogs DocumentAuditLog[]
   folder    Folder?            @relation(fields: [folderId], references: [id], onDelete: Cascade)
   folderId  String?
-  reminder  DocumentReminder?
 
   @@unique([documentDataId])
   @@index([userId])
@@ -839,48 +838,4 @@ model AvatarImage {
 
   team Team[]
   user User[]
-}
-
-model DocumentReminder {
-  id           Int      @id @default(autoincrement())
-  documentId   Int      @unique @map("document_id")
-  enabled      Boolean  @default(true)
-  intervalDays Int      @default(4) @map("interval_days")
-  maxReminders Int      @default(10) @map("max_reminders")
-  createdAt    DateTime @default(now()) @map("created_at")
-  stoppedAt    DateTime? @map("stopped_at")
-  stoppedReason String? @map("stopped_reason")
-
-  document Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
-  history  ReminderHistory[]
-  stopped  StoppedReminder[]
-
-  @@map("document_reminders")
-}
-
-model ReminderHistory {
-  id            Int      @id @default(autoincrement())
-  documentId    Int      @map("document_id")
-  recipientIds  String   @map("recipient_ids") // JSON array of recipient IDs
-  sentAt        DateTime @default(now()) @map("sent_at")
-  reminderCount Int      @map("reminder_count")
-  success       Boolean  @default(true)
-  errorMessage  String?  @map("error_message")
-
-  documentReminder DocumentReminder @relation(fields: [documentId], references: [documentId], onDelete: Cascade)
-
-  @@map("reminder_history")
-}
-
-model StoppedReminder {
-  id            Int      @id @default(autoincrement())
-  documentId    Int      @map("document_id")
-  recipientId   Int?     @map("recipient_id") // NULL means all recipients
-  stoppedAt     DateTime @default(now()) @map("stopped_at")
-  stoppedReason String   @map("stopped_reason")
-  stoppedBy     String   @map("stopped_by") // 'owner', 'recipient', 'system'
-
-  documentReminder DocumentReminder @relation(fields: [documentId], references: [documentId], onDelete: Cascade)
-
-  @@map("stopped_reminders")
 }

@@ -81,31 +81,6 @@ export const DocumentsTable = ({
         size: 140,
       },
       {
-        header: _(msg`Reminders`),
-        accessorKey: 'reminders',
-        cell: ({ row }) => {
-          // Mock reminder data - this would come from the database/API
-          const isRemindersEnabled = false;
-          const reminderCount = 0;
-          const maxReminders = 10;
-          
-          if (row.original.status !== 'PENDING') {
-            return <span className="text-muted-foreground text-xs">—</span>;
-          }
-          
-          if (!isRemindersEnabled) {
-            return <span className="text-muted-foreground text-xs">Disabled</span>;
-          }
-          
-          return (
-            <span className="text-xs">
-              {reminderCount}/{maxReminders}
-            </span>
-          );
-        },
-        size: 80,
-      },
-      {
         header: _(msg`Actions`),
         cell: ({ row }) =>
           (!row.original.deletedAt || isDocumentCompleted(row.original.status)) && (
