@@ -53,7 +53,7 @@ export default function PublicProfileLayout() {
               to="/"
               className="focus-visible:ring-ring ring-offset-background rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 md:inline"
             >
-              <BrandingLogo className="hidden h-6 w-auto sm:block" />
+              <BrandingLogo className="hidden h-10 w-auto sm:block" />
 
               <img
                 src={LogoIcon}
