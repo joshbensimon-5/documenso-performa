@@ -6,7 +6,6 @@ import { PlusIcon } from 'lucide-react';
 import { ChevronLeft } from 'lucide-react';
 import { Link, Outlet, isRouteErrorResponse } from 'react-router';
 
-import LogoIcon from '@documenso/assets/logo_icon.png';
 import { useOptionalSession } from '@documenso/lib/client-only/providers/session';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
@@ -56,8 +55,8 @@ export default function PublicProfileLayout() {
               <BrandingLogo className="hidden h-10 w-auto sm:block" />
 
               <img
-                src={LogoIcon}
-                alt="Documenso Logo"
+                src="/static/logo.png"
+                alt="Logo"
                 width={48}
                 height={48}
                 className="h-10 w-auto sm:hidden dark:invert"

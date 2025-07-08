@@ -1,11 +1,11 @@
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
 
 export const appMetaTags = (title?: string) => {
-  const description = 'Hermione - signature de documents';
+  const description = 'Performa Business School - signature de documents';
 
   return [
     {
-      title: title ? `${title} - Hermione` : 'Hermione',
+      title: title ? `${title} - Performa Business School` : 'Performa Business School',
     },
     {
       name: 'description',
@@ -13,11 +13,11 @@ export const appMetaTags = (title?: string) => {
     },
     {
       name: 'keywords',
-      content: 'Signature Hermione',
+      content: 'Signature Performa Business School',
     },
     {
       name: 'author',
-      content: 'Hermione',
+      content: 'Performa Business School',
     },
     {
       name: 'robots',
@@ -25,7 +25,7 @@ export const appMetaTags = (title?: string) => {
     },
     {
       property: 'og:title',
-      content: 'Hermione - Signature',
+      content: 'Performa Business School - Signature',
     },
     {
       property: 'og:description',
