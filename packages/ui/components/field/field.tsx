@@ -72,8 +72,11 @@ export function FieldRootContainer({ field, children, color, className }: FieldR
     };
   }, []);
 
-  const isTextField = field.type === FieldType.TEXT || field.type === FieldType.NAME || 
-                      field.type === FieldType.EMAIL || field.type === FieldType.NUMBER;
+  const isTextField =
+    field.type === FieldType.TEXT ||
+    field.type === FieldType.NAME ||
+    field.type === FieldType.EMAIL ||
+    field.type === FieldType.NUMBER;
 
   return (
     <FieldContainerPortal field={field}>
@@ -90,6 +93,7 @@ export function FieldRootContainer({ field, children, color, className }: FieldR
             'justify-center': !field.inserted,
             'bg-white/90': !isTextField,
             'ring-2 ring-gray-200': !isTextField,
+            'border border-gray-300': isTextField,
             'ring-2 ring-orange-300': isValidating && isFieldUnsignedAndRequired(field),
           },
           className,
