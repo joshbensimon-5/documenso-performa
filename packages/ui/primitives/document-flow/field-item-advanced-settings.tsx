@@ -87,7 +87,7 @@ const getDefaultState = (fieldType: FieldType): FieldMeta => {
       return {
         type: 'date',
         fontSize: 14,
-        textAlign: 'left',
+        textAlign: 'right',
       };
     case FieldType.TEXT:
       return {
