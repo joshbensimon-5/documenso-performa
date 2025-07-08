@@ -11,7 +11,7 @@ RUN apk add --no-cache openssl
 ###########################
 FROM base AS builder
 
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+# Check https://github.com/nodejs/docker-node/tree/b4117f9329 to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 RUN apk add --no-cache jq
 WORKDIR /app
@@ -29,7 +29,7 @@ RUN turbo prune --scope=@documenso/remix --docker
 ###########################
 FROM base AS installer
 
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+# Check https://github.com/nodejs/docker-node/tree/b4117f9329 to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 RUN apk add --no-cache jq
 # Required for node_modules/aws-crt
@@ -108,6 +108,8 @@ COPY --from=installer --chown=nodejs:nodejs /app/packages/prisma/migrations ./pa
 # Generate the prisma client again
 RUN npx prisma generate --schema ./packages/prisma/schema.prisma
 
+# Copy the migration fix script
+COPY --chown=nodejs:nodejs ./add-customer-id-column.js ./add-customer-id-column.js
 
 # Get the start script from docker/start.sh
 COPY --chown=nodejs:nodejs ./docker/start.sh /app/apps/remix/start.sh
