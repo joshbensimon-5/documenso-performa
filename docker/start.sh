@@ -6,8 +6,8 @@ set -x
 echo "🚀 Running Prisma migrations..."
 npx prisma migrate deploy --schema ../../packages/prisma/schema.prisma
 
-# Check migration status and fix any missing columns
-echo "🔧 Checking and fixing database schema..."
+# Run comprehensive database schema migration to ensure all tables and columns exist
+echo "🔧 Running comprehensive database schema migration..."
 node ../../add-customer-id-column.js
 
 echo "🌟 Starting application server..."
